@@ -1,0 +1,118 @@
+---
+// Data & Props
+import Counter from '../components/counter';
+
+const pageTitle = "Welcome to Our Sandbox Environment";
+const navItems = [
+  { text: "Home", href: "#" },
+  { text: "About", href: "#" },
+  { text: "Services", href: "#" },
+  { text: "Contact", href: "#" }
+];
+
+const features = [
+  {
+    title: "Feature One",
+    description: "I'm actually not your site, I'm just a local astro instance."
+  },
+  {
+    title: "Feature Two",
+    description: "I do hot reloading, I share your CSS and node modules, I'm flexible and composable."
+  },
+  {
+    title: "Feature Three",
+    description: "I'm fond of SPA frameworks and I'm great for static development too. I'm also fond of scrabble."
+  }
+];
+---
+
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{pageTitle}</title>
+		<link rel="stylesheet" href="/style/main.css">
+	</head>
+	<body class="bg-gray-100 min-h-full flex flex-col">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between items-center h-16">
+          <div class="text-xl font-bold text-gray-800">Logo</div>
+          <div class="hidden md:flex space-x-4">
+            {navItems.map(item => (
+              <a
+                href={item.href}
+                class="text-gray-600 hover:text-gray-900"
+              >
+                {item.text}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content Wrapper -->
+    <main class="flex-grow">
+      <!-- Hero Section -->
+      <header class="bg-white py-16">
+        <div class="max-w-6xl mx-auto px-4">
+          <div class="text-center">
+            <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
+              {pageTitle}
+            </h1>
+            <p class="text-lg text-gray-600 mb-8">
+              A modern front-end development environment
+            </p>
+            <a href="/about" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition duration-300">
+              Learn More
+            </a>
+
+            <!-- React Demo Section -->
+            <div class="my-16 max-w-md mx-auto">
+              <h2 class="text-2xl font-bold text-gray-800 mb-6">Did this get a Reaction?</h2>
+              <Counter client:load />
+            </div>
+            <p>Okay, that was corny... Moving On!</p>
+          </div>
+        </div>
+      </header>
+
+      <!-- Features Section -->
+      <section class="py-16">
+        <div class="max-w-6xl mx-auto px-4">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {features.map(feature => (
+              <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                  {feature.title}
+                </h3>
+                <p class="text-gray-600">
+                  {feature.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-auto">
+      <div class="max-w-6xl mx-auto px-4 py-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="text-center md:text-left mb-4 md:mb-0">
+            <p>&copy; It's {new Date().getFullYear()}. Use Astro!</p>
+          </div>
+          <div class="flex space-x-4">
+            <a href="#" class="hover:text-gray-600">Privacy</a>
+            <a href="#" class="hover:text-gray-300">Terms</a>
+            <a href="#" class="hover:text-gray-300">Contact</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+	</body>
+</html>
